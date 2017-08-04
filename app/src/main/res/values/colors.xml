@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FEFEFE</color>
+    <color name="gray">#d5d6d8</color>
+    <color name="dark_gray">#b3bdc2</color>
+    <color name="red">#fd2d47</color>
+    <color name="text_dark_gray">#919499</color>
+    <color name="toolbar_color">#2196f3</color>
+    <color name="card_gray">#a8bbd1</color>
+    <color name="blue_text">#0e63a7</color>
+    <color name="dark_text">#4e4c4c</color>
+    <color name="bottom_menu_item">#E6E0E0</color>
+</resources>

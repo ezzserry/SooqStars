@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">SooqStars</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">هذا البريد الالكتروني غير صحيح </string>
+    <string name="error_invalid_password">كلمة السر يجب ان لا تقل عن 6 حروف او ارقام</string>
+    <string name="error_incorrect_password">كلمة السر غير صحيحية</string>
+    <string name="error_password_does_not_match">غير متطابقة مع كلمة السر</string>
+    <string name="error_field_required">لابد من ملئ هذه الخانة</string>
+    <string name="error_incorrect_phone">عدد ارقام الجوال لا تزيد او اتقل عن 10 خانات</string>
+    <string name="error_not_starting_with_plus">يجب ان يبدأ ب +</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="famous_name">اسم الشهرة</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="phone_number">رقم الجوال</string>
+    <string name="post_code"> المفتاح الدولي</string>
+    <string name="password"> كلمة السر</string>
+    <string name="repassword">اعادة كلمة السر</string>
+    <string name="create_an_account">إنشاء حساب</string>
+    <string name="create_desc">قم بإنشاء حساب او تسجيل الدخول  لتتمكن من التمتع بكامل خدماتنا</string>
+    <string name="create">إنشاء حساب</string>
+    <string name="already_have_account">انا املك حساب مسبقاً ...</string>
+    <string name="already_have_account_sign_in">تسجيل الدخول</string>
+    <string name="sign_in">دخول</string>
+    <string name="username_phone">اسم المستخدم أو رقم الجوال</string>
+    <string name="search_results">نتائج التصنيف</string>
+
+    <string name="my_fav_list">قائمة المفضلة</string>
+    <string name="settings">الاعدادات</string>
+    <string name="following_list">قائمة المتابعة</string>
+    <string name="my_ads">اعلاناتي</string>
+    <string name="how_to_use">سياسة الاستخدام</string>
+    <string name="contact_us">تواصل معنا</string>
+
+    <string name="change_photo_title">تغييرالصورة الشخصية</string>
+    <string name="change_photo_des">يمكن تحميل صورة الملف الشخصي الخاص بك من هنا</string>
+    <string name="modify_phone_no">تعديل رقم الهاتف</string>
+    <string name="change_password_title">تعديل كلمة المرور</string>
+    <string name="old_password">كلمة السر القديمة</string>
+    <string name="new_password">كلمة السر الجديدة</string>
+    <string name="re_new_password">اعادة كلمة السر الجديدة</string>
+    <string name="save_modification_data">حفظ التعديلات</string>
+</resources>

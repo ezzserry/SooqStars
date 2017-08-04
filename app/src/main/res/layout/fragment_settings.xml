@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_white"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_gray_settings"
+        android:layoutDirection="rtl"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_user_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/bg_gray_frame"
+            android:padding="10dp"
+            android:src="@drawable/bg_default_pic" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/iv_user_photo"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/iv_user_photo"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_change_photo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layoutDirection="rtl"
+                android:maxLines="1"
+                android:text="@string/change_photo_title"
+                android:textColor="@color/dark_text" />
+
+            <TextView
+                android:id="@+id/tv_change_photo_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/change_photo_des"
+                android:textColor="@color/text_dark_gray"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_upload_photo" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_gray_modify_no"
+        android:layoutDirection="rtl"
+        android:padding="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_et"
+            android:gravity="start|center"
+            android:hint="@string/modify_phone_no"
+            android:inputType="phone"
+            android:paddingStart="10dp"
+            android:textColor="@color/text_dark_gray"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_gray_settings"
+        android:layoutDirection="rtl"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_change_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:text="@string/change_password_title"
+            android:textColor="@color/dark_text"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_old_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_change_password"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_et"
+            android:gravity="end|center"
+            android:hint="@string/old_password"
+            android:inputType="textPassword"
+            android:layoutDirection="rtl"
+            android:padding="5dp"
+            android:textColor="@color/dark_text"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_old_password"
+            android:weightSum="2.1">
+
+            <EditText
+                android:id="@+id/et_new_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_et"
+                android:gravity="end|center"
+                android:hint="@string/new_password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:textColor="@color/dark_text"
+                android:textSize="15sp" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1" />
+
+            <EditText
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_et"
+                android:gravity="end|center"
+                android:hint="@string/re_new_password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:textColor="@color/dark_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_save_modifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/bg_red_button"
+        android:drawableEnd="@drawable/ic_arrow_search"
+        android:layoutDirection="rtl"
+        android:padding="15dp"
+        android:text="@string/save_modification_data"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+</LinearLayout>
