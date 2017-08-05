@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import myapplications.serry.sooqstars.R;
 import myapplications.serry.sooqstars.adapters.AdsAdapter;
 import myapplications.serry.sooqstars.apis.GetSooqAds;
+import myapplications.serry.sooqstars.basemodels.AdObjectBaseModel;
 import myapplications.serry.sooqstars.basemodels.AdsBaseModel;
 import myapplications.serry.sooqstars.helpers.Constants;
 import myapplications.serry.sooqstars.helpers.Utils;
@@ -57,7 +58,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         initViews();
         return view;
     }
@@ -85,9 +86,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 adsBaseModelCall.enqueue(new Callback<List<AdsBaseModel>>() {
                     @Override
                     public void onResponse(Call<List<AdsBaseModel>> call, Response<List<AdsBaseModel>> response) {
-                        List<AdsBaseModel> adsList = response.body();
-//                        ads.addAll(adsList.);
-//                        adsAdapter.notifyItemRangeInserted(adsAdapter.getItemCount(), ads.size() - 1);
+                        List<Ad> adsList = response.body().get(0).getAds();
+                        ads.addAll(adsList);
+                        adsAdapter.notifyItemRangeInserted(adsAdapter.getItemCount(), ads.size() - 1);
                     }
 
                     @Override

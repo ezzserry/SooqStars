@@ -87,7 +87,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdViewHolder> {
 
         public AdViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this,itemView);
         }
     }
 }

@@ -10,22 +10,22 @@ import myapplications.serry.sooqstars.models.Pager;
  */
 
 public class AdsBaseModel {
-    List<Ad> items;
-    Pager pager;
+    List<Ad> Items;
+    Pager Pager;
 
     public List<Ad> getAds() {
-        return items;
+        return Items;
     }
 
     public void setAds(List<Ad> ads) {
-        this.items = ads;
+        this.Items = ads;
     }
 
     public Pager getPager() {
-        return pager;
+        return Pager;
     }
 
     public void setPager(Pager pager) {
-        this.pager = pager;
+        this.Pager = pager;
     }
 }

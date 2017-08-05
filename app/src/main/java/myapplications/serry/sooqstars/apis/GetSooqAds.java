@@ -2,6 +2,7 @@ package myapplications.serry.sooqstars.apis;
 
 import java.util.List;
 
+import myapplications.serry.sooqstars.basemodels.AdObjectBaseModel;
 import myapplications.serry.sooqstars.basemodels.AdsBaseModel;
 import myapplications.serry.sooqstars.helpers.Constants;
 import retrofit2.Call;
