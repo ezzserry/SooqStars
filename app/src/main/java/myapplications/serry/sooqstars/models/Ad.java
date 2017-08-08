@@ -1,14 +1,11 @@
 package myapplications.serry.sooqstars.models;
 
-import java.util.List;
-
 /**
  * Created by awstreams on 8/3/17.
  */
 
 public class Ad {
-    List<Ad> items;
-    String id;
+    String Id;
     String Title;
     String Description;
     String CategoryId;
@@ -36,20 +33,12 @@ public class Ad {
     String Tags;
     String Photo;
 
-    public List<Ad> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Ad> items) {
-        this.items = items;
-    }
-
     public String getId() {
-        return id;
+        return Id;
     }
 
     public void setId(String id) {
-        id = id;
+        Id = id;
     }
 
     public String getTitle() {

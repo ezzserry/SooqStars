@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/top_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@drawable/bg_earth"
-        android:layoutDirection="rtl">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/bg_sooq_stars_gray" />
+        android:gravity="bottom"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/rl_buttons_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layoutDirection="rtl">
+            android:layout_marginBottom="10dp"
+            android:layoutDirection="rtl"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp">
 
             <Button
                 android:id="@+id/btn_sooq"
@@ -52,78 +50,71 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:background="@drawable/bg_gray"
-            android:layoutDirection="rtl">
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            android:weightSum="10">
 
             <ImageView
                 android:id="@+id/iv_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:src="@drawable/ic_camera" />
 
-            <LinearLayout
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_toEndOf="@id/iv_camera"
+                android:src="@drawable/hprizontal_line_separator" />
+
+            <Spinner
+                android:id="@+id/spinner_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_toEndOf="@+id/iv_camera"
-                android:layout_toStartOf="@+id/btn_search_results"
-                android:orientation="horizontal">
+                android:layout_gravity="center"
+                android:layout_weight="2.5"
+                android:layoutDirection="rtl" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="5dp"
-                    android:layout_toEndOf="@id/iv_camera"
-                    android:src="@drawable/hprizontal_line_separator" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/iv_camera"
+                android:src="@drawable/hprizontal_line_separator" />
 
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layoutDirection="rtl" />
+            <Spinner
+                android:id="@+id/spinner_district"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.5"
+                android:layoutDirection="rtl" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_toEndOf="@id/iv_camera"
-                    android:src="@drawable/hprizontal_line_separator" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hprizontal_line_separator" />
 
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layoutDirection="rtl" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_toEndOf="@id/iv_camera"
-                    android:src="@drawable/hprizontal_line_separator" />
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layoutDirection="rtl" />
-            </LinearLayout>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2.5"
+                android:layoutDirection="rtl" />
 
             <Button
                 android:id="@+id/btn_search_results"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_gravity="end|center"
+                android:layout_weight="1.5"
                 android:background="@drawable/btn_search_results"
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/ic_search"
@@ -132,15 +123,27 @@
                 android:text="@string/search_results"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
-        </RelativeLayout>
-    </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_results"
+    <FrameLayout
+        android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/top_view"
-        android:layout_weight="5"
-        android:layoutDirection="rtl"
-        android:padding="10dp" />
-</LinearLayout>
+        android:padding="10dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="rtl" />
+
+        <ProgressBar
+            android:id="@+id/pb_ads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+    </FrameLayout>
+</RelativeLayout>

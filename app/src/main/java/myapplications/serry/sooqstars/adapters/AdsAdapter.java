@@ -18,6 +18,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import myapplications.serry.sooqstars.R;
+import myapplications.serry.sooqstars.helpers.Constants;
 import myapplications.serry.sooqstars.models.Ad;
 
 /**
@@ -87,7 +88,13 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdViewHolder> {
 
         public AdViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
+            tvTitle.setTypeface(Constants.getTypeFace(context));
+            tvAdvertiserName.setTypeface(Constants.getTypeFace(context));
+            tvComments.setTypeface(Constants.getTypeFace(context));
+            tvLikes.setTypeface(Constants.getTypeFace(context));
+            tvTimeAgo.setTypeface(Constants.getTypeFace(context));
+            tvLocation.setTypeface(Constants.getTypeFace(context));
         }
     }
 }
