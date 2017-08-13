@@ -66,7 +66,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
 
-
         initViews();
     }
 
@@ -81,6 +80,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         });
 
         editor = sharedPreferences.edit();
+        tvSignIn.setTypeface(Constants.getTypeFace(this));
+        etNickname.setTypeface(Constants.getTypeFace(this));
+        etEmail.setTypeface(Constants.getTypeFace(this));
+        etPassword.setTypeface(Constants.getTypeFace(this));
+        etPhone.setTypeface(Constants.getTypeFace(this));
+        etUsername.setTypeface(Constants.getTypeFace(this));
+        etRePassword.setTypeface(Constants.getTypeFace(this));
+        btnCreateAnAccount.setTypeface(Constants.getTypeFace(this));
+
     }
 
     private boolean validateParams() {

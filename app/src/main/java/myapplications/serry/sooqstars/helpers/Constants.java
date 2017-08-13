@@ -13,6 +13,7 @@ public class Constants {
     public static String font = "font.ttf";
 
     public static Typeface typeface;
+
     public static Typeface getTypeFace(Context context) {
         typeface = Typeface.createFromAsset(context.getAssets(), font);
         return typeface;
@@ -29,10 +30,14 @@ public class Constants {
     final public static String GET_Messages = BASE_URL + "message/token/{token}";
     final public static String GET_Ads = BASE_URL + "ad/recent";
     final public static String GET_Cities = BASE_URL + "city/get";
+    final public static String GET_Feature_Values = BASE_URL + "FeatureValue/GetByFeatueId";
+    final public static String GET_ALL_VALUES = BASE_URL + "feature/getvalues";
+
 
     /*apis info*/
     final public static String SOOQ_ID = "1";
     final public static String MEHAN_ID = "2";
     final public static String STARS_ID = "3";
-    final public static int resultSize=5;
+    final public static int resultSize = 5;
+
 }

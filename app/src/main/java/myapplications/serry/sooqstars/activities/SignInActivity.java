@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -29,6 +30,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     EditText etUsername;
     @BindView(R.id.et_password)
     EditText etPassword;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private String sUsername, sPassword;
     private Retrofit retrofit;
     private SharedPreferences sharedPreferences;
@@ -42,6 +45,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         sharedPreferences = getSharedPreferences(Constants.MyPrefs, 0);
         editor = sharedPreferences.edit();
         btnSignIn.setOnClickListener(this);
+        btnSignIn.setTypeface(Constants.getTypeFace(this));
+        etPassword.setTypeface(Constants.getTypeFace(this));
+        etUsername.setTypeface(Constants.getTypeFace(this));
+        tvTitle.setTypeface(Constants.getTypeFace(this));
     }
 
     private boolean validateParams() {
