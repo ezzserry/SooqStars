@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="@drawable/btn_mehan" />
+                android:background="@drawable/btn_stars" />
 
             <Button
                 android:id="@+id/btn_mehan"
@@ -130,8 +130,7 @@
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/top_view"
-        android:padding="10dp">
+        android:layout_below="@id/top_view">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_results"

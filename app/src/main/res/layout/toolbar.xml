@@ -36,6 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:background="@drawable/ic_search" />
+            android:background="@drawable/ic_search_bar" />
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

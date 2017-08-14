@@ -2,7 +2,6 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:layoutDirection="rtl">
 
     <LinearLayout
@@ -79,10 +78,10 @@
             android:layout_margin="10dp"
             android:background="@color/white"
             android:layoutDirection="rtl"
+            android:padding="5dp"
             android:text="ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
             android:textColor="@color/dark_text"
-            android:textSize="15sp"
-            android:padding="5dp"/>
+            android:textSize="15sp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
 
