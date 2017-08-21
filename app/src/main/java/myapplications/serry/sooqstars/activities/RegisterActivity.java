@@ -58,14 +58,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-        sharedPreferences = getSharedPreferences(Constants.MyPrefs, 0);
-        if (sharedPreferences.getBoolean(Constants.isLoggedIn, true)) {
-            intent = new Intent(RegisterActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-
         initViews();
     }
 
