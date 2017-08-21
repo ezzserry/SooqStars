@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -19,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import myapplications.serry.sooqstars.R;
 import myapplications.serry.sooqstars.helpers.Constants;
+import myapplications.serry.sooqstars.interfaces.OnAdClickListener;
 import myapplications.serry.sooqstars.models.Ad;
 
 /**
@@ -27,12 +29,14 @@ import myapplications.serry.sooqstars.models.Ad;
 
 public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdViewHolder> {
 
-    List<Ad> adsList;
-    Context context;
+    private List<Ad> adsList;
+    private Context context;
+    private OnAdClickListener onAdClickListener;
 
     public AdsAdapter(Context context, List<Ad> adsList) {
         this.context = context;
         this.adsList = adsList;
+        onAdClickListener = (OnAdClickListener) context;
     }
 
     @Override
@@ -43,12 +47,12 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(AdViewHolder holder, int position) {
+    public void onBindViewHolder(AdViewHolder holder, final int position) {
         Ad adItem = adsList.get(position);
         holder.tvTitle.setText(adItem.getTitle());
         holder.tvAdvertiserName.setText(adItem.getOwner());
         holder.tvTimeAgo.setText(adItem.getTimeAgo());
-        holder.tvComments.setText(adItem.getComments());
+//        holder.tvComments.setText(adItem.getComments().size());
         holder.tvLikes.setText(adItem.getNumOfLikes());
         holder.tvLocation.setText(adItem.getCity());
         Glide.with(context).load(adItem.getImageURL()).listener(new RequestListener<String, GlideDrawable>() {
@@ -62,6 +66,16 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdViewHolder> {
                 return false;
             }
         }).into(holder.ivAdPhoto);
+        holder.llAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onAdClickListener != null) {
+                    Ad clickedAd = adsList.get(position);
+                    onAdClickListener.onAdClick(clickedAd.getRefId());
+
+                }
+            }
+        });
     }
 
     @Override
@@ -84,6 +98,8 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdViewHolder> {
         TextView tvTimeAgo;
         @BindView(R.id.tv_location)
         TextView tvLocation;
+        @BindView(R.id.ll_ad_container)
+        LinearLayout llAd;
 
 
         public AdViewHolder(View itemView) {

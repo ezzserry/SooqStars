@@ -47,4 +47,7 @@
     <string name="new_password">كلمة السر الجديدة</string>
     <string name="re_new_password">اعادة كلمة السر الجديدة</string>
     <string name="save_modification_data">حفظ التعديلات</string>
+<string name="write_a_comment">اكتب تعليق</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -4,6 +4,7 @@ package myapplications.serry.sooqstars.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +31,7 @@ import myapplications.serry.sooqstars.basemodels.AdsBaseModel;
 import myapplications.serry.sooqstars.helpers.Constants;
 import myapplications.serry.sooqstars.helpers.EndlessRecyclerViewScrollListener;
 import myapplications.serry.sooqstars.helpers.Utils;
+import myapplications.serry.sooqstars.interfaces.OnAdClickListener;
 import myapplications.serry.sooqstars.models.Ad;
 import myapplications.serry.sooqstars.models.Cities;
 import myapplications.serry.sooqstars.models.Districts;
@@ -68,6 +70,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     Spinner spinnerDistrict;
     List<Cities> citiesList;
     List<String> sDistricts;
+    private ArrayAdapter<String> dataAdapter;
 
     public static synchronized HomeFragment newInstance() {
         return new HomeFragment();
@@ -84,6 +87,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         initViews();
     }
 
@@ -137,32 +146,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-   /* private void addCitiesToDB(List<Cities> citiesList) {
-        addCitiesToDB(citiesList);
-        for (Cities cities : citiesList) {
-            Cities cityModel = new Cities(cities.getDistricts(), cities.getId(), cities.getName());
-            cityModel.save();
-        }
-        fillCitiesSpinner(citiesList);
-    }*/
-
     private void fillCitiesSpinner(final List<Cities> citiesList) {
-        List<String> citiesNames = null;
-       /* List<Cities> cityModel = SQLite.select().from(Cities.class).queryList();
-        if (cityModel.size() >= 1) {
-            for (Cities cities : cityModel) {
-                citiesList.add(cities);
-            }*/
-            citiesNames = new ArrayList<>();
+        List<String> citiesNames = new ArrayList<>();
 
-            for (int i = 0; i <citiesList.size(); i++) {
-                String name = citiesList.get(i).getName();
-                citiesNames.add(name);
-            }
-//        }
+        for (int i = 0; i < citiesList.size(); i++) {
+            String name = citiesList.get(i).getName();
+            citiesNames.add(name);
+        }
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, citiesNames);
+        if (getActivity() != null){
+            dataAdapter = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_spinner_item, citiesNames);
+        }
+        else
+
+
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCity.setAdapter(dataAdapter);
 
@@ -176,7 +174,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     String name = districtsList.get(j).getName();
                     districtNames.add(name);
                 }
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getActivity(),
                         android.R.layout.simple_spinner_item, districtNames);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerDistrict.setAdapter(dataAdapter);
@@ -241,4 +239,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
     }
+
+
 }

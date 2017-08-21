@@ -1,10 +1,13 @@
 package myapplications.serry.sooqstars.models;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * Created by awstreams on 8/3/17.
  */
 
-public class Ad {
+public class Ad implements Serializable {
     String Id;
     String Title;
     String Description;
@@ -28,9 +31,9 @@ public class Ad {
     String Owner;
     String City;
     String TimeAgo;
-    String Images;
-    String Comments;
-    String Tags;
+    ArrayList<Images> Images;
+    ArrayList<Comments> Comments;
+    ArrayList<Tags> Tags;
     String Photo;
 
     public String getId() {
@@ -217,27 +220,27 @@ public class Ad {
         TimeAgo = timeAgo;
     }
 
-    public String getImages() {
+    public ArrayList<myapplications.serry.sooqstars.models.Images> getImages() {
         return Images;
     }
 
-    public void setImages(String images) {
+    public void setImages(ArrayList<myapplications.serry.sooqstars.models.Images> images) {
         Images = images;
     }
 
-    public String getComments() {
+    public ArrayList<myapplications.serry.sooqstars.models.Comments> getComments() {
         return Comments;
     }
 
-    public void setComments(String comments) {
+    public void setComments(ArrayList<myapplications.serry.sooqstars.models.Comments> comments) {
         Comments = comments;
     }
 
-    public String getTags() {
+    public ArrayList<myapplications.serry.sooqstars.models.Tags> getTags() {
         return Tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(ArrayList<myapplications.serry.sooqstars.models.Tags> tags) {
         Tags = tags;
     }
 

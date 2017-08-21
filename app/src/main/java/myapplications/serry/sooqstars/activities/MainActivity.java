@@ -23,16 +23,19 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import myapplications.serry.sooqstars.R;
+import myapplications.serry.sooqstars.fragments.AdDetailsFragment;
 import myapplications.serry.sooqstars.fragments.HomeFragment;
 import myapplications.serry.sooqstars.fragments.MessagesFragment;
 import myapplications.serry.sooqstars.fragments.MoreFragment;
 import myapplications.serry.sooqstars.fragments.NotificationsFragment;
+import myapplications.serry.sooqstars.interfaces.OnAdClickListener;
+import myapplications.serry.sooqstars.models.Ad;
 
 /**
  * Created by awstreams on 8/1/17.
  */
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnAdClickListener {
     @BindView(R.id.bottom_navigation)
     LinearLayout bottomNavigationItemView;
     @BindView(R.id.ib_home)
@@ -106,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 selectedFragment = HomeFragment.newInstance();
                 break;
         }
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction().addToBackStack("");
         fragmentTransaction.replace(R.id.content_container, selectedFragment);
         fragmentTransaction.commit();
 
@@ -127,6 +130,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageButton.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.bottom_menu_item, null));
                 imageButton.clearColorFilter();
             }
+        }
+    }
+
+    @Override
+    public void onAdClick(String adId) {
+        AdDetailsFragment homeFragment = AdDetailsFragment.newInstance(adId);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_container, homeFragment);
+        fragmentTransaction.addToBackStack("Ad Details");
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            //additional code
+        } else {
+            getFragmentManager().popBackStack();
         }
     }
 }
