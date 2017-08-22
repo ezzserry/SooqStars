@@ -64,10 +64,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private List<Ad> ads;
     private int adPage = 1;
     private String RequestID = "";
-    @BindView(R.id.spinner_city)
-    Spinner spinnerCity;
-    @BindView(R.id.spinner_district)
-    Spinner spinnerDistrict;
+    //    @BindView(R.id.spinner_city)
+//    Spinner spinnerCity;
+//    @BindView(R.id.spinner_district)
+//    Spinner spinnerDistrict;
     List<Cities> citiesList;
     List<String> sDistricts;
     private ArrayAdapter<String> dataAdapter;
@@ -116,15 +116,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             }
         });
-
+        scaleButtons(Constants.SOOQ_ID);
         getSooqAds(adPage, Constants.SOOQ_ID);
 
         citiesList = new ArrayList<>();
 
-        getCities();
+//        getCities();
     }
 
-    private void getCities() {
+   /* private void getCities() {
         retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(Utils.newInstance().getClient(getActivity()))
@@ -144,9 +144,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             }
         });
-    }
+    }*/
 
-    private void fillCitiesSpinner(final List<Cities> citiesList) {
+   /* private void fillCitiesSpinner(final List<Cities> citiesList) {
         List<String> citiesNames = new ArrayList<>();
 
         for (int i = 0; i < citiesList.size(); i++) {
@@ -154,14 +154,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             citiesNames.add(name);
         }
 
-        if (getActivity() != null){
+        if (getActivity() != null) {
             dataAdapter = new ArrayAdapter<>(getActivity(),
                     android.R.layout.simple_spinner_item, citiesNames);
-        }
-        else
+        } else
 
 
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCity.setAdapter(dataAdapter);
 
 
@@ -185,7 +184,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             }
         });
-    }
+    }*/
 
 
     @Override
@@ -198,20 +197,54 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.btn_sooq:
                 RequestID = Constants.SOOQ_ID;
+                scaleButtons(RequestID);
                 getSooqAds(1, Constants.SOOQ_ID);
                 break;
 
             case R.id.btn_mehan:
                 RequestID = Constants.MEHAN_ID;
+                scaleButtons(RequestID);
                 getSooqAds(1, Constants.MEHAN_ID);
                 break;
 
             case R.id.btn_stars:
                 RequestID = Constants.STARS_ID;
+                scaleButtons(RequestID);
                 getSooqAds(1, Constants.STARS_ID);
                 break;
         }
     }
+
+    private void scaleButtons(String requestID) {
+        switch (requestID) {
+            case "1":
+                btnSooq.setScaleX((float) 1.1);
+                btnSooq.setScaleY((float) 1.1);
+                btnStars.setScaleX((float) 0.8);
+                btnStars.setScaleY((float) 0.8);
+                btnMehan.setScaleX((float) 0.8);
+                btnMehan.setScaleY((float) 0.8);
+                break;
+            case "2":
+                btnMehan.setScaleX((float) 1.1);
+                btnMehan.setScaleY((float) 1.1);
+                btnSooq.setScaleX((float) 0.8);
+                btnSooq.setScaleY((float) 0.8);
+                btnStars.setScaleX((float) 0.8);
+                btnStars.setScaleY((float) 0.8);
+                break;
+            case "3":
+                btnStars.setScaleX((float) 1.1);
+                btnStars.setScaleY((float) 1.1);
+                btnSooq.setScaleX((float) 0.8);
+                btnSooq.setScaleY((float) 0.8);
+                btnMehan.setScaleX((float) 0.8);
+                btnMehan.setScaleY((float) 0.8);
+                break;
+
+        }
+    }
+
 
     private void getSooqAds(int page, String id) {
         retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
@@ -228,7 +261,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 List<AdsBaseModel> adsList = response.body();
                 ads.addAll(adsList.get(0).getAds());
                 adsAdapter.notifyItemRangeInserted(adsAdapter.getItemCount(), ads.size() - 1);
-
             }
 
             @Override

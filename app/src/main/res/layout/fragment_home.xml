@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="10">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/top_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="0dp"
+        android:layout_weight="4"
         android:background="@drawable/bg_earth"
-        android:gravity="bottom"
         android:layoutDirection="rtl"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/rl_buttons_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:layoutDirection="rtl"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp">
+            android:gravity="center"
+            android:layoutDirection="rtl">
 
             <Button
                 android:id="@+id/btn_sooq"
@@ -48,89 +47,57 @@
                 android:background="@drawable/btn_mehan" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:background="@drawable/bg_gray"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal"
-            android:padding="3dp"
-            android:weightSum="10">
+            android:padding="5dp">
 
-            <ImageView
-                android:id="@+id/iv_camera"
+            <ImageButton
+                android:id="@+id/ib_switch_photos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/ic_camera" />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_toEndOf="@id/iv_camera"
-                android:src="@drawable/hprizontal_line_separator" />
-
-            <Spinner
-                android:id="@+id/spinner_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="2.5"
-                android:layoutDirection="rtl" />
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_margin="3dp"
+                android:background="@drawable/ic_camera" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/iv_camera"
-                android:src="@drawable/hprizontal_line_separator" />
+                android:layout_toEndOf="@+id/ib_switch_photos"
+                android:background="@drawable/hprizontal_line_separator" />
 
-            <Spinner
-                android:id="@+id/spinner_district"
+            <LinearLayout
+                android:id="@+id/sub_categories_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="2.5"
-                android:layoutDirection="rtl" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/hprizontal_line_separator" />
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="2.5"
-                android:layoutDirection="rtl" />
+                android:layout_centerInParent="true"
+                android:orientation="horizontal" />
 
             <Button
-                android:id="@+id/btn_search_results"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end|center"
-                android:layout_weight="1.5"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/btn_search_results"
-                android:drawablePadding="5dp"
+                android:drawablePadding="3dp"
                 android:drawableStart="@drawable/ic_search"
-                android:paddingEnd="5dp"
-                android:paddingStart="3dp"
+                android:padding="3dp"
                 android:text="@string/search_results"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/top_view">
+        android:layout_height="0dp"
+        android:layout_weight="6">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_results"
@@ -145,4 +112,4 @@
             android:layout_gravity="center"
             android:visibility="visible" />
     </FrameLayout>
-</RelativeLayout>
+</LinearLayout>

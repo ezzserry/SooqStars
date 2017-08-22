@@ -135,9 +135,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onAdClick(String adId) {
-        AdDetailsFragment homeFragment = AdDetailsFragment.newInstance(adId);
+        AdDetailsFragment adDetailsFragment = AdDetailsFragment.newInstance(adId);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.content_container, homeFragment);
+        fragmentTransaction.replace(R.id.content_container, adDetailsFragment);
         fragmentTransaction.addToBackStack("Ad Details");
         fragmentTransaction.commit();
     }
