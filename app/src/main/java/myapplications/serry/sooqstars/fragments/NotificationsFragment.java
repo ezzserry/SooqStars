@@ -39,7 +39,6 @@ public class NotificationsFragment extends Fragment {
     RecyclerView rvResults;
     @BindView(R.id.pb_results)
     ProgressBar pbResults;
-    private Retrofit retrofit;
     private NotificationsAdapter notificationsAdapter;
     private LinearLayoutManager layoutManager;
     private List<Notification> notificationList;
@@ -76,11 +75,8 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void getNotifications() {
-        retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(Utils.newInstance().getClient(getActivity()))
-                .build();
-        GetNotifications getNotifications = retrofit.create(GetNotifications.class);
+
+        GetNotifications getNotifications = Utils.newInstance().getRetrofit().create(GetNotifications.class);
         Call<List<Notification>> adsBaseModelCall = getNotifications.getNotifications("4");
         adsBaseModelCall.enqueue(new Callback<List<Notification>>() {
             @Override

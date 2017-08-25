@@ -33,6 +33,7 @@ public class Constants {
     final public static String GET_Feature_Values = BASE_URL + "FeatureValue/GetByFeatueId";
     final public static String GET_ALL_VALUES = BASE_URL + "feature/getvalues";
     final public static String GET_AD_Details = BASE_URL + "ad/getbyrefid/{id}";
+    final public static String GET_CATEGORIES = BASE_URL + "category/type/{id}";
 
 
     /*apis info*/

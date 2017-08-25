@@ -43,7 +43,6 @@ public class MessagesFragment extends Fragment {
     RecyclerView rvResults;
     @BindView(R.id.pb_results)
     ProgressBar pbResults;
-    private Retrofit retrofit;
     private MessagesAdapter messagesAdapter;
     private LinearLayoutManager layoutManager;
     private List<Message> messageList;
@@ -70,11 +69,8 @@ public class MessagesFragment extends Fragment {
     }
 
     private void getMessages() {
-        retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(Utils.newInstance().getClient(getActivity()))
-                .build();
-        GetMessages getMessages = retrofit.create(GetMessages.class);
+
+        GetMessages getMessages = Utils.newInstance().getRetrofit().create(GetMessages.class);
         Call<List<Message>> adsBaseModelCall = getMessages.getMessages(sharedPreferences.getString(Constants.User_Token, ""));
         adsBaseModelCall.enqueue(new Callback<List<Message>>() {
             @Override

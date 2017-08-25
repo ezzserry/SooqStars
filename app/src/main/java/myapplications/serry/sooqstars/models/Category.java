@@ -14,11 +14,11 @@ public class Category {
     String ParentId;
     String ImageURL;
     String CreatedDate;
-    String SubCategories;
+    List<Category> SubCategories;
     List<Features> Features;
 
     public Category(String id, String name, String isActive, String typeId, String parentId, String imageURL, String createdDate,
-                    String subCategories, List<myapplications.serry.sooqstars.models.Features> features) {
+                    List<Category>  subCategories, List<myapplications.serry.sooqstars.models.Features> features) {
         Id = id;
         Name = name;
         IsActive = isActive;
@@ -89,11 +89,11 @@ public class Category {
         CreatedDate = createdDate;
     }
 
-    public String getSubCategories() {
+    public  List<Category>  getSubCategories() {
         return SubCategories;
     }
 
-    public void setSubCategories(String subCategories) {
+    public void setSubCategories( List<Category>  subCategories) {
         SubCategories = subCategories;
     }
 

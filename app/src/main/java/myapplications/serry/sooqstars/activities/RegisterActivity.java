@@ -46,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @BindView(R.id.tv_sign_in)
     TextView tvSignIn;
     private String sNickname, sUsername, sEmail, sPassword, sRePassword, sPhone, sCountryCode;
-    private Retrofit retrofit;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private Intent intent;
@@ -163,11 +162,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void register() {
 
-        retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(Utils.newInstance().getClient(this))
-                .build();
-        Register registerApi = retrofit.create(Register.class);
+        Register registerApi = Utils.newInstance().getRetrofit().create(Register.class);
         Call<SignInBaseModel> connection = registerApi.register(sNickname, sUsername, sEmail, sPassword, sPhone, sCountryCode);
         connection.enqueue(new Callback<SignInBaseModel>() {
             @Override

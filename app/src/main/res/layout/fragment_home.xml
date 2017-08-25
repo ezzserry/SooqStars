@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:orientation="vertical">
+
 
     <FrameLayout
         android:id="@+id/top_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_earth"
         android:layoutDirection="rtl"
         android:orientation="vertical">
@@ -18,8 +17,8 @@
             android:id="@+id/rl_buttons_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
+            android:layout_gravity="top"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:layoutDirection="rtl">
 
@@ -49,39 +48,55 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@drawable/bg_gray"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:weightSum="12">
 
             <ImageButton
                 android:id="@+id/ib_switch_photos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
+                android:layout_gravity="start|center"
                 android:layout_margin="3dp"
                 android:background="@drawable/ic_camera" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/ib_switch_photos"
-                android:background="@drawable/hprizontal_line_separator" />
-
             <LinearLayout
-                android:id="@+id/sub_categories_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:orientation="horizontal" />
+                android:layout_gravity="center"
+                android:layout_weight="12"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl" />
+
+                <Spinner
+                    android:id="@+id/spinner_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl" />
+
+                <Spinner
+                    android:id="@+id/spinner_values"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl" />
+
+            </LinearLayout>
 
             <Button
+                android:id="@+id/btn_filter_results"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+                android:layout_gravity="end|center"
                 android:background="@drawable/btn_search_results"
                 android:drawablePadding="3dp"
                 android:drawableStart="@drawable/ic_search"
@@ -89,15 +104,14 @@
                 android:text="@string/search_results"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
-        </RelativeLayout>
+        </LinearLayout>
 
     </FrameLayout>
 
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6">
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_results"

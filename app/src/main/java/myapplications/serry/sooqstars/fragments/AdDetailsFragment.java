@@ -55,7 +55,6 @@ public class AdDetailsFragment extends Fragment {
     LinearLayout llImages;
 
     private View view;
-    private Retrofit retrofit;
     private String AdId;
     @BindView(R.id.pb_results)
     ProgressBar pbResults;
@@ -101,12 +100,7 @@ public class AdDetailsFragment extends Fragment {
     }
 
     private void initViews(String ID) {
-
-        retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(Utils.newInstance().getClient(getActivity()))
-                .build();
-        GetAdDetails getAdDetails = retrofit.create(GetAdDetails.class);
+        GetAdDetails getAdDetails = Utils.newInstance().getRetrofit().create(GetAdDetails.class);
         Call<List<Ad>> listCall = getAdDetails.getAdDetails(ID);
         listCall.enqueue(new Callback<List<Ad>>() {
             @Override

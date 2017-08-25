@@ -8,6 +8,7 @@ import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +32,7 @@ import myapplications.serry.sooqstars.fragments.MoreFragment;
 import myapplications.serry.sooqstars.fragments.NotificationsFragment;
 import myapplications.serry.sooqstars.interfaces.OnAdClickListener;
 import myapplications.serry.sooqstars.models.Ad;
+import myapplications.serry.sooqstars.models.Category;
 
 /**
  * Created by awstreams on 8/1/17.
@@ -48,12 +51,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton ibMessages;
     @BindView(R.id.ib_more)
     ImageButton ibMore;
-    ArrayList<ImageButton> menuItems = new ArrayList();
+    ArrayList<ImageButton> menuItems;
     @BindView(R.id.toolbar)
     CoordinatorLayout toolbar;
     @BindView(R.id.tv_page_title)
     TextView tvPageTitle;
-    private ImageButton ibSearch, ibSideMenu;
+    @BindView(R.id.ib_search)
+    ImageButton ibSearch;
+    @BindView(R.id.ib_side_menu)
+    ImageButton ibSideMenu;
+    @BindView(R.id.side_categories)
+    LinearLayout llSideCategories;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initViews() {
+        menuItems = new ArrayList();
         menuItems.add(0, ibHome);
         menuItems.add(1, ibMessages);
         menuItems.add(2, ibNotifications);
@@ -74,7 +83,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ibMessages.setOnClickListener(this);
         ibMore.setOnClickListener(this);
         selectHomeFragment();
+        ibSideMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (llSideCategories.getVisibility() == View.VISIBLE)
+                    llSideCategories.setVisibility(View.GONE);
+                else
+                    llSideCategories.setVisibility(View.VISIBLE);
+            }
+        });
     }
+
+
 
     private void selectHomeFragment() {
         HomeFragment homeFragment = HomeFragment.newInstance();
@@ -108,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 resetBackground(4);
                 selectedFragment = HomeFragment.newInstance();
                 break;
+
         }
         fragmentTransaction = getSupportFragmentManager().beginTransaction().addToBackStack("");
         fragmentTransaction.replace(R.id.content_container, selectedFragment);

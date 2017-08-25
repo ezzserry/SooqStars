@@ -33,7 +33,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.tv_title)
     TextView tvTitle;
     private String sUsername, sPassword;
-    private Retrofit retrofit;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -87,11 +86,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private void signIn() {
         Utils.newInstance().showLoading(SignInActivity.this);
-        retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(Utils.newInstance().getClient(this))
-                .build();
-        SignIn signInApi = retrofit.create(SignIn.class);
+        SignIn signInApi = Utils.newInstance().getRetrofit().create(SignIn.class);
         Call<SignInBaseModel> connection = signInApi.signIn(sUsername, sPassword);
         connection.enqueue(new Callback<SignInBaseModel>() {
             @Override
